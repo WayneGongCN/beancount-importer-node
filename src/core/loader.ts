@@ -4,12 +4,12 @@ import { Conf } from '../bin/bean-importer';
 
 
 const readFile = (filePath: string) => {
-  return readFileSync(filePath, {encoding: 'utf8'})
+  return readFileSync(filePath, { encoding: 'utf8' })
 }
 
 
-const csvLoader = (str: string) => {
-  return parse(str, {
+const csvLoader = (content: string) => {
+  return parse(content, {
     trim: true,
     columns: true,
     skip_empty_lines: true,
@@ -18,9 +18,15 @@ const csvLoader = (str: string) => {
   });
 }
 
+const loadMap = {
+  csv: csvLoader
+}
+
 
 export default (conf: Conf, ctx: any): any => {
   const str = readFile(conf.inputPath)
-  const data = csvLoader(str)
+
+  const loader = loadMap[conf.loader];
+  const data = loader(str)
   return data
 }

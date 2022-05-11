@@ -5,18 +5,16 @@ import { Conf } from "../bin/bean-importer";
 export interface BeancountRecord {
   date: Date;
   symbol: string; // '*' | '!';
-  payee: string;
-  comments: string;
+  payee: string;  // 收款人
+  comments: string; // 备注
   records: AccountRecord[]
 }
 
 export interface AccountRecord {
-  account: string;
-  amount: string;
-  amountDebit: string;
-  currency: string;
+  account: string;  // 账户
+  amount: number; // 金额
+  currency: string; // 货币
 }
-
 
 
 

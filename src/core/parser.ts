@@ -21,9 +21,6 @@ const parser = (conf: Conf) => (parseRules: ParseRule[]) => {
   }, data)
 }
 
-/**
- * parser 将原始数据格式化为标准输入输入数据
- */
 export default (conf: Conf, ctx: any) => (data: any[]) => {
   const { mapperConf, parseRules } = conf
 

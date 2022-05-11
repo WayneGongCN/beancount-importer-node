@@ -16,20 +16,7 @@ export default (conf: Conf): Conf => {
         if (date.getTime()) return date
         else return dateStr
       }
-    },
-    {
-      key: MapperKey.records,
-      fn: (val: any, conf: Conf) => {
-        return [
-          {
-            amount: val.amount,
-            account: val.account,
-            amountDebit: val.amountDebit,
-            currency: conf.currency
-          }
-        ]
-      }
-    },
+    }
   ]
 
 
