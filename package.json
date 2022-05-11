@@ -1,0 +1,30 @@
+{
+  "name": "beancount-importer-node",
+  "version": "0.0.0",
+  "description": "beancount importer",
+  "bin": {
+    "bean-importer": "dist/bin/bean-importer.js"
+  },
+  "scripts": {
+    "dev": "tsc -w --sourceMap",
+    "start": "node es/bin/bean-importer.js",
+    "build": "rm -fr ./dist && tsc && cp -r src/template dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WayneGongCN/beancount-importer-node.git"
+  },
+  "author": "wayne <me@waynegong.cn>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WayneGongCN/beancount-importer-node/issues"
+  },
+  "homepage": "https://github.com/WayneGongCN/beancount-importer-node#readme",
+  "dependencies": {
+    "@types/node": "^17.0.31",
+    "commander": "^9.2.0",
+    "csv-parse": "^5.0.4",
+    "log4js": "^6.4.6",
+    "typescript": "^4.6.4"
+  }
+}
