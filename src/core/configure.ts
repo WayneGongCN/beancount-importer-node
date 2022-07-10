@@ -2,9 +2,9 @@ import { Conf, MapperKey, ParseRule } from "../bin/bean-importer";
 
 
 
-export default (conf: Conf): Conf => {
+export default (conf: Conf, cliOptions: Partial<Conf>): Conf => {
   const DEFAULT_CONF: Partial<Conf> = {
-    symbol: '*'
+    // symbol: '*'
   }
 
   const DEFAULT_PARSER_RULES: ParseRule[] = [
@@ -23,6 +23,7 @@ export default (conf: Conf): Conf => {
   return {
     ...DEFAULT_CONF,
     ...conf,
-    parseRules: [...DEFAULT_PARSER_RULES, ...conf.parseRules],
+    ...cliOptions,
+    fieldParseRules: [...DEFAULT_PARSER_RULES, ...conf.fieldParseRules],
   }
 }

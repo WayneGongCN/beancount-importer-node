@@ -7,8 +7,7 @@
   },
   "scripts": {
     "dev": "tsc -w --sourceMap",
-    "start": "node es/bin/bean-importer.js",
-    "build": "rm -fr ./dist && tsc && cp -r src/template dist/"
+    "build": "rm -fr ./dist && tsc"
   },
   "repository": {
     "type": "git",

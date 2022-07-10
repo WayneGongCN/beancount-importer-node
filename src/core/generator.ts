@@ -18,12 +18,12 @@ export interface AccountRecord {
 
 
 
-const stringifyDate = (date: Date) => `${date.getFullYear()}-${date.getMonth() + 1}${date.getDate()}`
+const stringifyDate = (date: Date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
 
 const genAccountRecord = (data: AccountRecord) => {
   const { account, amount, currency } = data
-  return `${account} ${amount} ${currency}`
+  return `  ${account} ${amount} ${currency}`
 }
 
 
@@ -31,13 +31,13 @@ const genBeancountRecord = (data: BeancountRecord) => {
   const { date, symbol, payee, comments, records } = data
   const recordStr = records.map(genAccountRecord).join('\n')
   return `
-${stringifyDate(date)} ${symbol} ${comments}
+${stringifyDate(date)} ${symbol || '*'} "${payee || ''}" "${comments || ''}"
 ${recordStr}
 `
 }
 
 
-export default (conf: Conf, ctx: any) => (records: BeancountRecord[]): Promise<void> => {
+export default (conf: Conf) => (records: BeancountRecord[]): Promise<void> => {
   const { outputPath: filePath } = conf;
   const content = records.map(genBeancountRecord).join('\n')
 
